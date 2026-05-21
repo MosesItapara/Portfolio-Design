@@ -1,6 +1,6 @@
 # 🚀 Data & ML Engineer Portfolio
 
-A terminal-inspired, AI-powered portfolio with live AI chat — built with Node.js + Express + Groq API.
+A terminal-inspired, AI-powered portfolio with live AI chat built with Node.js + Express + Groq API.
 
 ---
 
@@ -9,7 +9,7 @@ A terminal-inspired, AI-powered portfolio with live AI chat — built with Node.
 - **Hero terminal** — animated typewriter sequence on load
 - **Projects** — 6 showcase cards with metrics and tech tags
 - **Skills** — JSON-syntax display + animated proficiency bars
-- **AI Chat** — powered by Groq (`llama-3.3-70b-versatile`) — extremely fast responses
+- **AI Chat** — powered by Groq (`llama-3.3-70b-versatile`) extremely fast responses
 - **Contact** — links section
 - Terminal / phosphor-green CRT aesthetic throughout
 
