@@ -493,7 +493,7 @@ a:hover { color: #fff; }
       </div>
       <div class="github-stats" id="githubStats">
         <div class="gh-stat"><span class="gh-val" id="gh-repos">30+</span><span class="gh-label">Public Repos</span></div>
-        <div class="gh-stat"><span class="gh-val" id="gh-stars">1</span><span class="gh-label">Total Stars</span></div>
+        <div class="gh-stat"><span class="gh-val" id="gh-stars">10+</span><span class="gh-label">Models Shipped</span></div>
         <div class="gh-stat">
           <span class="gh-val" style="font-size:1rem;padding-top:0.4rem;">Jupyter<br>Python</span>
           <span class="gh-label">Top Languages</span>
@@ -592,7 +592,9 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara/Forecasting-Rental-Bike-Count-Kedro-Dash" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Bike Rental Demand Forecasting</h3>
-      <p class="project-desc">Full MLOps pipeline with real-time Dash dashboard. CatBoost model across three Kedro pipelines, Dockerized and deployed on Railway.</p>
+      <p class="project-desc">Forecasting demand is only useful if you can act on it in time. This project builds a full MLOps pipeline that predicts hourly bike rental counts and surfaces them in a live dashboard.
+                Three Kedro stages handle feature engineering (with lag features), CatBoost training and a continuous inference loop. The inference engine and dashboard run in separate Docker containers sharing a volume decoupled and independently restartable. Predictions are visualised in real time with an adjustable lookback window, containerised with Docker Compose, and deployed on Railway.
+                The key design choice is separation of concerns: training, inference and visualisation are cleanly isolated, so any one piece can be swapped or adjusted without touching the others.</p>
       <div class="project-tags">
         <span class="tag">Kedro</span><span class="tag">CatBoost</span><span class="tag">Dash</span><span class="tag">Docker</span><span class="tag">Railway</span>
       </div>
@@ -603,9 +605,9 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara/nairobi-house-price-prediction" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Nairobi House Price Prediction</h3>
-      <p class="project-desc">Scraped live listings from property24.co.ke, trained an XGBoost model, and deployed a Streamlit app on Render.</p>
+      <p class="project-desc">Property data in Kenya is fragmented and rarely structured. Rather than use a pre-packaged dataset, this project starts with a scraper that pulls live listings from Property24.co.ke, cleans the raw data, and trains an XGBoost model to predict prices across Nairobi's neighbourhoods. Location turned out to be the dominant signal — properties in Muthaiga cost over 30x more than comparable ones in Kitengela. The model is served through a Streamlit app where you enter bedrooms, bathrooms, size, and amenities and get a price estimate in KES with the key drivers explained. R² of 0.38 — honest about the limits of public listing data and a good argument for why richer features matter.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span><span class="tag">Render</span>
+        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span><span class="tag">Render</span><span class="tag">BeautifulSoup</span>
       </div>
     </article>
     <article class="project-card">
@@ -614,7 +616,7 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Atlas Travel Assistant</h3>
-      <p class="project-desc">AI travel assistant answering real-time questions on weather, currency, and destinations. FastAPI + LangChain + Groq (llama-3.3-70b). Production API on Railway.</p>
+      <p class="project-desc">A conversational travel assistant that answers real questions: current weather, exchange rates, destination info — rather than giving static, pre-written responses. Built on FastAPI with LangChain orchestrating tool calls to a Groq-hosted Llama 3.3 70B model. The interesting constraint here was latency: Groq's inference speed makes the assistant feel responsive enough for actual use rather than a demo. Deployed as a production API on Railway.</p>
       <div class="project-tags">
         <span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">Groq</span><span class="tag">llama-3.3-70b</span><span class="tag">Railway</span>
       </div>
@@ -625,7 +627,7 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">VitrAI — Glass Classification</h3>
-      <p class="project-desc">Multiclass ML classifier for glass types. Modular Flask pipeline with TensorFlow and Dill serialization. Custom train/predict pipeline architecture.</p>
+      <p class="project-desc">A multiclass classifier that identifies glass types from physical composition data. The focus of this project isn't the dataset, it's the architecture: a modular Flask pipeline where training and prediction are fully separated, serialized with Dill to preserve the complete pipeline state. Built with TensorFlow. The kind of clean separation that makes a model actually swappable in production.</p>
       <div class="project-tags">
         <span class="tag">Flask</span><span class="tag">TensorFlow</span><span class="tag">Dill</span><span class="tag">Python</span>
       </div>
@@ -636,7 +638,7 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Maternal Health Risk Predictor</h3>
-      <p class="project-desc">Multiclass risk classification system (Low / Mid / High) using Kedro pipelines, CatBoost, and a real-time Dash dashboard.</p>
+      <p class="project-desc">Classifies pregnancy risk into Low, Mid and High using clinical vitals. The pipeline follows the same Kedro structure as the Bike Forecasting project: feature engineering, CatBoost training and inference are separate, testable stages, with predictions surfaced through a real-time Dash dashboard. The domain matters here: a misclassification in a health context is expensive, which is why the multi-class framing and pipeline reproducibility are the right choices.</p>
       <div class="project-tags">
         <span class="tag">Kedro</span><span class="tag">CatBoost</span><span class="tag">Flask</span><span class="tag">Docker</span><span class="tag">Railway</span>
       </div>
@@ -647,7 +649,7 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Network Security</h3>
-      <p class="project-desc">An end-to-end machine learning pipeline for network intrusion and threat detection, built with FastAPI, MLflow and DagsHub containerized with Docker and deployed on Railway.</p>
+      <p class="project-desc">An end-to-end threat detection pipeline that classifies network traffic as normal or malicious. Built with FastAPI for the inference endpoint, MLflow and DagsHub for experiment tracking and model registry, CatBoost for classification and Docker for containerisation all deployed on Railway. The stack is what makes this notable: full MLOps instrumentation on a security use case, not just a notebook with accuracy numbers.</p>
       <div class="project-tags">
         <span class="tag">Python</span><span class="tag">CatBoost</span><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">MLflow</span><span class="tag">DagsHub</span><span class="tag">Railway</span>
       </div>
@@ -658,7 +660,7 @@ a:hover { color: #fff; }
         <a href="https://github.com/MosesItapara" target="_blank" class="project-link">View on GitHub ↗</a>
       </div>
       <h3 class="project-name">Calories Burnt Prediction</h3>
-      <p class="project-desc">Predicts calories burned during exercise using physiological inputs. XGBoost regression model served through a Flask web app with a clean user interface for real-time inference.</p>
+      <p class="project-desc">Predicts calories burned during exercise from physiological inputs: age, weight, duration, heart rate. XGBoost regression model served through a Flask app with a clean UI for real-time inference, Dockerized and deployed on Railway. A focused, well-scoped project: one clear problem, one model, one interface.</p>
       <div class="project-tags">
         <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Flask</span><span class="tag">Docker</span><span class="tag">Railway</span>
       </div>
