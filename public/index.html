@@ -281,104 +281,6 @@ a:hover { color: #fff; }
 }
 .skill-pct { font-size: 0.68rem; color: var(--text-dimmer); text-align: right; }
 
-/* AI Chat — Floating Widget */
-.chat-fab {
-  position: fixed; bottom: 2rem; right: 2rem; z-index: 2000;
-  width: 52px; height: 52px; background: var(--lime);
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(176,231,9,0.3);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.chat-fab:hover { transform: scale(1.08); }
-.chat-fab svg { width: 22px; height: 22px; fill: #080808; }
-
-/* Chat widget — dark background, lime accents */
-.chat-widget {
-  position: fixed; bottom: 6rem; right: 2rem; z-index: 1999;
-  width: 380px; background: #0d0d0d;
-  border: 1px solid rgba(176,231,9,0.25);
-  display: none; flex-direction: column;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-}
-.chat-widget.open { display: flex; }
-
-.chat-widget-header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(176,231,9,0.12);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.chat-widget-title {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-size: 0.88rem; font-weight: 700; color: #f5eded;
-}
-.chat-widget-dot {
-  width: 8px; height: 8px; background: var(--lime);
-  border-radius: 50%; box-shadow: 0 0 6px var(--lime);
-  animation: pulse 2.5s ease-in-out infinite;
-}
-.chat-widget-badge {
-  font-size: 0.62rem; color: #555; letter-spacing: 0.08em;
-}
-/* REMOVE close btn from header — it's now a separate button below */
-.chat-close-btn { display: none; }
-
-.chat-widget-body {
-  padding: 1rem 1.25rem; min-height: 280px; max-height: 340px;
-  overflow-y: auto; display: flex; flex-direction: column; gap: 0.85rem;
-  scrollbar-width: thin; scrollbar-color: var(--lime-dim) transparent;
-  font-size: 0.82rem;
-}
-.chat-intro {
-  color: #888; line-height: 1.7; font-size: 0.82rem;
-}
-.chat-chip {
-  background: none; border: 1px solid rgba(176,231,9,0.35);
-  color: var(--lime-mid); font-family: var(--font-mono);
-  font-size: 0.72rem; padding: 0.5rem 0.85rem;
-  cursor: pointer; text-align: left;
-  transition: border-color var(--transition), background var(--transition);
-}
-.chat-chip:hover { border-color: var(--lime); background: rgba(176,231,9,0.06); }
-
-.chat-msg-label { font-size: 0.62rem; color: #444; letter-spacing: 0.08em; }
-.chat-msg-row.user .chat-msg-label { color: var(--amber); font-weight: 700; }
-.chat-msg-row.assistant .chat-msg-label { color: var(--lime-dim); }
-.chat-msg-bubble { font-size: 0.8rem; line-height: 1.65; color: #888; white-space: pre-wrap; }
-.chat-msg-row.user .chat-msg-bubble { color: #f5eded; }
-.chat-msg-row.assistant .chat-msg-bubble { color: var(--lime); }
-.chat-msg-row.thinking .chat-msg-bubble { color: #444; font-style: italic; }
-
-.chat-widget-input {
-  border-top: 1px solid rgba(200,241,53,0.12);
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.75rem 1rem; background: #111;
-}
-.chat-widget-input input {
-  flex: 1; background: transparent; border: none; outline: none;
-  color: #f5eded; font-family: var(--font-mono);
-  font-size: 0.8rem; caret-color: var(--lime);
-}
-.chat-widget-input input::placeholder { color: #444; }
-.chat-send-btn {
-  width: 34px; height: 34px; background: var(--lime);
-  border: none; cursor: pointer; display: flex;
-  align-items: center; justify-content: center;
-  transition: opacity 0.2s; flex-shrink: 0;
-}
-.chat-send-btn svg { width: 15px; height: 15px; fill: #080808; background: var(--lime); }
-
-.chat-close-standalone {
-  position: fixed; bottom: 2rem; right: 2rem; z-index: 2001;
-  width: 52px; height: 52px; background: var(--lime);
-  border: none; cursor: pointer; display: none;
-  align-items: center; justify-content: center;
-  font-size: 1.1rem; color: #080808; font-weight: 700;
-}
-.chat-widget.open ~ .chat-close-standalone { display: flex; }
-/* Also hide FAB when chat is open */
-.chat-fab { display: flex; }
-
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 2rem; }
 .contact-open { font-size: 0.72rem; color: var(--text-dimmer); font-style: italic; margin-bottom: 1rem; }
 .contact-open::before { content: '// '; color: var(--lime-dim); }
@@ -779,7 +681,7 @@ a:hover { color: #fff; }
 </section>
 
 <footer class="footer">
-  <span>built with HTML + CSS + Groq AI</span>
+  <span>built with HTML + CSS + JS</span>
   <span class="footer-sep">|</span>
   <span>© <span id="footerYear"></span> Haggai Moses Itapara</span>
   <span class="footer-sep">|</span>
@@ -796,37 +698,6 @@ a:hover { color: #fff; }
     </a>
   </div>
 </footer>
-
-<!-- Floating Chat Button -->
-<button class="chat-fab" id="chatFab" aria-label="Open AI chat">
-  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-</button>
-
-<!-- Chat Widget -->
-<div class="chat-widget" id="chatWidget">
-  <div class="chat-widget-header">
-    <div class="chat-widget-title">
-      <div class="chat-widget-dot"></div>
-      <span>Ask Haggai's AI</span>
-    </div>
-    <div class="chat-widget-badge">powered by groq</div>
-    <button class="chat-close-btn" id="chatClose" aria-label="Close chat">✕</button>
-  </div>
-  <div class="chat-widget-body" id="chatBody">
-    <div class="chat-intro">Hey 👋 I'm Haggai's AI assistant. Ask me anything about his work, skills, or projects.</div>
-    <div class="chat-chips" id="chatChips">
-      <button class="chat-chip">What projects have you built?</button>
-      <button class="chat-chip">What's your ML stack?</button>
-      <button class="chat-chip">Are you open to work?</button>
-    </div>
-  </div>
-  <div class="chat-widget-input">
-    <input type="text" id="widgetInput" placeholder="Ask something..." autocomplete="off" />
-    <button class="chat-send-btn" id="widgetSend" aria-label="Send">
-      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
-    </button>
-  </div>
-</div>
 
 <script>
 'use strict';
@@ -879,85 +750,6 @@ const sectionObs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.section').forEach(el => sectionObs.observe(el));
 
-// AI Chat Widget
-const chatFab    = document.getElementById('chatFab');
-const chatWidget = document.getElementById('chatWidget');
-const chatClose  = document.getElementById('chatClose');
-const chatBody   = document.getElementById('chatBody');
-const widgetInput= document.getElementById('widgetInput');
-const widgetBtn  = document.getElementById('widgetSend');
-let wHistory = [];
-let wBusy = false;
-
-if (chatFab) chatFab.addEventListener('click', () => {
-  chatWidget.classList.toggle('open');
-  const isOpen = chatWidget.classList.contains('open');
-  // Toggle FAB icon between chat and X
-  chatFab.innerHTML = isOpen
-    ? '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="#080808" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="#080808" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>';
-  if (isOpen) widgetInput.focus();
-});
-
-function wScroll() { chatBody.scrollTop = chatBody.scrollHeight; }
-
-function wAddMsg(role, text) {
-  const row = document.createElement('div');
-  row.className = 'chat-msg-row ' + role;
-  row.innerHTML = `<div class="chat-msg-label">${role === 'user' ? 'YOU' : role === 'thinking' ? '...' : 'HAGGAI.AI'}</div><div class="chat-msg-bubble">${text}</div>`;
-  chatBody.appendChild(row);
-  wScroll();
-  return row;
-}
-
-document.querySelectorAll('.chat-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    const q = chip.textContent;
-    document.getElementById('chatChips').style.display = 'none';
-    wSend(q);
-  });
-});
-
-async function wSend(msg) {
-  if (wBusy || !msg.trim()) return;
-  wBusy = true;
-  widgetBtn.disabled = true;
-  widgetInput.value = '';
-  wAddMsg('user', msg);
-  const thinking = wAddMsg('thinking', 'thinking...');
-  wHistory.push({ role: 'user', content: msg });
-
-  const SYSTEM = `You are Haggai Moses Itapara's AI assistant on his portfolio website. Haggai is a Machine Learning Engineer based in Nairobi, Kenya. He specializes in MLOps, data engineering, and building end-to-end ML pipelines. His stack includes Python, CatBoost, XGBoost, TensorFlow, Kedro, Docker, FastAPI, Flask, LangChain, MLflow, DagsHub, Railway, PostgreSQL, MongoDB. He is CEO & Co-founder of Diraflow (training data & annotation for African markets) and a Lead Data Analyst intern at Strathmore School of Computing Sciences on a UK-funded project. He is open to full-time, contract, and consulting roles. Be concise, technical, and friendly.`;
-
-  try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_GROQ_API_KEY'
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [{ role: 'system', content: SYSTEM }, ...wHistory],
-        max_tokens: 300,
-        temperature: 0.7
-      })
-    });
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content || 'Sorry, I could not get a response.';
-    thinking.remove();
-    wAddMsg('assistant', reply);
-    wHistory.push({ role: 'assistant', content: reply });
-  } catch (e) {
-    thinking.remove();
-    wAddMsg('assistant', 'Connection error. Please try again.');
-  }
-  wBusy = false;
-  widgetBtn.disabled = false;
-}
-
-widgetBtn.addEventListener('click', () => wSend(widgetInput.value));
-widgetInput.addEventListener('keydown', e => { if (e.key === 'Enter') wSend(widgetInput.value); });
 </script>
 </body>
 </html>
