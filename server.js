@@ -16,7 +16,7 @@ app.post('/api/chat', async (req, res) => {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return res.status(500).json({
-      error: 'GROQ_API_KEY is not set. Add it as an environment variable in Railway.'
+      error: 'GROQ_API_KEY is not set. Add it as an environment variable in Netlify.'
     });
   }
 
