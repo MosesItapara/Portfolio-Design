@@ -238,6 +238,36 @@ function timeAgo(isoDate) {
   return `${Math.floor(months / 12)}y ago`;
 }
 
+const GITHUB_USER = 'MosesItapara';
+const ONGOING_EXCLUDED = ['Portfolio-Design', 'MosesItapara', 'appgithubaction'];
+
+function renderOngoingProjects(repos, featuredNames) {
+  const grid = document.getElementById('ongoingGrid');
+  if (!grid) return;
+
+  const ongoing = Object.entries(repos)
+    .filter(([name]) => !featuredNames.has(name) && !ONGOING_EXCLUDED.includes(name))
+    .sort((a, b) => new Date(b[1].updatedAt) - new Date(a[1].updatedAt));
+
+  if (!ongoing.length) {
+    grid.innerHTML = '<p style="font-size:0.78rem;color:var(--text-dimmer);">Nothing outside the featured projects right now.</p>';
+    return;
+  }
+
+  grid.innerHTML = ongoing.map(([name, repo]) => `
+    <article class="project-card">
+      <div class="project-top">
+        <span class="project-status status-progress">IN PROGRESS ◌</span>
+        <a href="${repo.htmlUrl || `https://github.com/${GITHUB_USER}/${name}`}" target="_blank" class="project-link">View on GitHub ↗</a>
+      </div>
+      <h3 class="project-name">${name.replace(/-/g, ' ')}</h3>
+      <span class="project-live">★ ${repo.stars} · updated ${timeAgo(repo.updatedAt)}</span>
+      <p class="project-desc">${repo.description || 'No description yet.'}</p>
+      <div class="project-tags">${repo.language ? `<span class="tag">${repo.language}</span>` : ''}</div>
+    </article>
+  `).join('');
+}
+
 async function initGithubData() {
   const repoEl  = document.getElementById('gh-repos');
   const langsEl = document.getElementById('gh-langs');
@@ -250,13 +280,17 @@ async function initGithubData() {
     if (repoEl && data.repoCount) repoEl.textContent = data.repoCount + '+';
     if (langsEl && data.topLanguages?.length) langsEl.innerHTML = data.topLanguages.join('<br>');
 
+    const featuredNames = new Set();
     document.querySelectorAll('[data-repo]').forEach(card => {
+      featuredNames.add(card.dataset.repo);
       const repo = data.repos?.[card.dataset.repo];
       const liveEl = card.querySelector('.project-live');
       if (repo && liveEl) {
         liveEl.textContent = `★ ${repo.stars} · updated ${timeAgo(repo.updatedAt)}`;
       }
     });
+
+    if (data.repos) renderOngoingProjects(data.repos, featuredNames);
   } catch {
     // Live stats are a nice-to-have; silently keep the static fallback values.
   }

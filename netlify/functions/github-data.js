@@ -29,7 +29,9 @@ exports.handler = async () => {
       repoMap[r.name] = {
         stars: r.stargazers_count,
         updatedAt: r.pushed_at,
-        language: r.language
+        language: r.language,
+        description: r.description,
+        htmlUrl: r.html_url
       };
     });
 
