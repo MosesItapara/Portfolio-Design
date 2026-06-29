@@ -40,6 +40,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   overflow-x: hidden;
+  perspective: 1500px;
 }
 a { color: var(--lime); text-decoration: none; }
 a:hover { color: #fff; }
@@ -166,7 +167,17 @@ a:hover { color: #fff; }
 .scroll-hint:hover { color: var(--lime); }
 @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-.section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+.section {
+  max-width: 1100px; margin: 0 auto; padding: 6rem 2rem;
+  transform: scale(0.8) rotateX(8deg);
+  opacity: 0.3; filter: blur(4px);
+  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease, filter 0.7s ease;
+  will-change: transform, opacity, filter;
+}
+.section.in-view {
+  transform: scale(1) rotateX(0deg);
+  opacity: 1; filter: blur(0);
+}
 .section-label {
   font-size: 0.65rem; color: var(--lime-dim); letter-spacing: 0.2em;
   text-transform: uppercase; margin-bottom: 0.6rem;
@@ -356,7 +367,7 @@ a:hover { color: #fff; }
 
 <div class="vignette" aria-hidden="true"></div>
 
-<nav class="nav">
+<nav class="nav" id="mainNav">
   <a href="#hero" class="nav-logo">HM<span>.</span></a>
   <div class="nav-links" id="navLinks">
     <a href="#about"      class="nav-link">About</a>
@@ -727,27 +738,7 @@ a:hover { color: #fff; }
 <script>
 'use strict';
 
-document.getElementById('navToggle').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('.nav-link').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-});
-
 document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-function initSkillBars() {
-  const fills = document.querySelectorAll('.skill-fill');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.style.width = e.target.dataset.pct + '%';
-      obs.unobserve(e.target);
-    });
-  }, { threshold: 0.2 });
-  fills.forEach(f => obs.observe(f));
-}
-initSkillBars();
 
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
@@ -769,12 +760,7 @@ function typeRole() {
   setTimeout(typeRole, deleting ? 45 : 80);
 }
 typeRole();
-
-const sectionObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = '1'; });
-}, { threshold: 0.1 });
-document.querySelectorAll('.section').forEach(el => sectionObs.observe(el));
-
 </script>
+<script src="app.js"></script>
 </body>
 </html>

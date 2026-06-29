@@ -180,19 +180,11 @@ function initScrollAnimations() {
   const targets = document.querySelectorAll('.section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
+      entry.target.classList.toggle('in-view', entry.isIntersecting);
     });
-  }, { threshold: 0.05 });
+  }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 });
 
-  targets.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-    observer.observe(el);
-  });
+  targets.forEach(el => observer.observe(el));
 }
 
 // ─── Mobile nav toggle ───────────────────────────────────────────────────────
