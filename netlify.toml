@@ -6,3 +6,8 @@
   from = "/api/health"
   to = "/.netlify/functions/health"
   status = 200
+
+[[redirects]]
+  from = "/api/github-data"
+  to = "/.netlify/functions/github-data"
+  status = 200

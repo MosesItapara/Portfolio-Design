@@ -227,6 +227,41 @@ function initMisc() {
   }
 }
 
+// ─── Live GitHub data ────────────────────────────────────────────────────────
+
+function timeAgo(isoDate) {
+  const days = Math.floor((Date.now() - new Date(isoDate)) / 86400000);
+  if (days < 1) return 'today';
+  if (days < 30) return `${days}d ago`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months}mo ago`;
+  return `${Math.floor(months / 12)}y ago`;
+}
+
+async function initGithubData() {
+  const repoEl  = document.getElementById('gh-repos');
+  const langsEl = document.getElementById('gh-langs');
+
+  try {
+    const res = await fetch('/api/github-data');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    if (repoEl && data.repoCount) repoEl.textContent = data.repoCount + '+';
+    if (langsEl && data.topLanguages?.length) langsEl.innerHTML = data.topLanguages.join('<br>');
+
+    document.querySelectorAll('[data-repo]').forEach(card => {
+      const repo = data.repos?.[card.dataset.repo];
+      const liveEl = card.querySelector('.project-live');
+      if (repo && liveEl) {
+        liveEl.textContent = `★ ${repo.stars} · updated ${timeAgo(repo.updatedAt)}`;
+      }
+    });
+  } catch {
+    // Live stats are a nice-to-have; silently keep the static fallback values.
+  }
+}
+
 // ─── Boot ────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -236,4 +271,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initMobileNav();
   initMisc();
+  initGithubData();
 });
