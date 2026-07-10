@@ -233,12 +233,30 @@ function timeAgo(isoDate) {
 const GITHUB_USER = 'MosesItapara';
 const ONGOING_EXCLUDED = ['Portfolio-Design', 'MosesItapara', 'appgithubaction'];
 
-function renderOngoingProjects(repos, featuredNames) {
+// All repos that have a curated card on either index.html or projects.html
+const ALL_FEATURED_REPOS = new Set([
+  'Churn-Prediction',
+  'Log-Text-Classification-Regex-Statistical-ML-LLM',
+  'Text-Summarizer-HuggingFace',
+  'Calories-Burnt-Prediction',
+  'Network-Security',
+  'Data-Science-Project',
+  'Music-Recommendation-System',
+  'Movie-Recommendation-System',
+  'Globe-Travel-Assistant-AI-Agent',
+  'Forecasting-Rental-Bike-Count-Kedro-Dash-Docker-Railway',
+  'Predicting-Maternal-Health-Risk-Kedro-Flask-Docker-Railway',
+  'Atlas-Travel-Assistant-Chatbot',
+  'Nairobi-House-Price-Prediction-Streamlit',
+  'VitrAI-Glass-Type-Classification-System-Flask',
+]);
+
+function renderOngoingProjects(repos) {
   const grid = document.getElementById('ongoingGrid');
   if (!grid) return;
 
   const ongoing = Object.entries(repos)
-    .filter(([name]) => !featuredNames.has(name) && !ONGOING_EXCLUDED.includes(name))
+    .filter(([name]) => !ALL_FEATURED_REPOS.has(name) && !ONGOING_EXCLUDED.includes(name))
     .sort((a, b) => new Date(b[1].updatedAt) - new Date(a[1].updatedAt));
 
   if (!ongoing.length) {
@@ -282,7 +300,7 @@ async function initGithubData() {
       }
     });
 
-    if (data.repos) renderOngoingProjects(data.repos, featuredNames);
+    if (data.repos) renderOngoingProjects(data.repos);
   } catch {
     // Live stats are a nice-to-have; silently keep the static fallback values.
   }
