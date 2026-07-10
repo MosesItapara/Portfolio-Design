@@ -110,6 +110,24 @@ a:hover { color: #fff; }
   border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim);
 }
 
+/* ── Filter bar ── */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.filter-btn {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  padding: 0.3rem 0.75rem; border-radius: 3px; cursor: pointer;
+  border: 1px solid var(--border); background: transparent; color: var(--text-dim);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.filter-btn:hover { border-color: var(--lime-mid); color: var(--lime); }
+.filter-btn.active {
+  border-color: var(--lime); color: var(--lime);
+  background: var(--lime-glow);
+}
+.project-card.hidden { display: none; }
+
 /* ── Ongoing section ── */
 .section-label {
   font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-dimmer);
@@ -149,9 +167,20 @@ a:hover { color: #fff; }
   <h1 class="page-title">All Projects<span class="dot">.</span></h1>
   <p class="page-sub">Every project I've shipped — updated live from GitHub.</p>
 
-  <div class="projects-grid">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="Python">Python</button>
+    <button class="filter-btn" data-filter="MLOps">MLOps</button>
+    <button class="filter-btn" data-filter="Docker">Docker</button>
+    <button class="filter-btn" data-filter="LLM">LLM</button>
+    <button class="filter-btn" data-filter="Deep Learning">Deep Learning</button>
+    <button class="filter-btn" data-filter="FastAPI">FastAPI</button>
+    <button class="filter-btn" data-filter="Jupyter">Jupyter</button>
+  </div>
 
-    <article class="project-card" data-repo="Churn-Prediction">
+  <div class="projects-grid" id="projectsGrid">
+
+    <article class="project-card" data-repo="Churn-Prediction" data-tags="Python,Scikit-learn,Jupyter">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Churn-Prediction" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -164,7 +193,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Log-Text-Classification-Regex-Statistical-ML-LLM">
+    <article class="project-card" data-repo="Log-Text-Classification-Regex-Statistical-ML-LLM" data-tags="Python,FastAPI,LLM,Sklearn">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Log-Text-Classification-Regex-Statistical-ML-LLM" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -177,7 +206,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Text-Summarizer-HuggingFace">
+    <article class="project-card" data-repo="Text-Summarizer-HuggingFace" data-tags="Python,Deep Learning,Jupyter">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Text-Summarizer-HuggingFace" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -190,7 +219,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Calories-Burnt-Prediction">
+    <article class="project-card" data-repo="Calories-Burnt-Prediction" data-tags="Python,Flask,Docker,Railway">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Calories-Burnt-Prediction" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -203,7 +232,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Network-Security">
+    <article class="project-card" data-repo="Network-Security" data-tags="Python,FastAPI,Docker,MLOps,Railway">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Network-Security" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -216,7 +245,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Data-Science-Project">
+    <article class="project-card" data-repo="Data-Science-Project" data-tags="Python,Jupyter">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Data-Science-Project" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -229,7 +258,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Music-Recommendation-System">
+    <article class="project-card" data-repo="Music-Recommendation-System" data-tags="Python,Scikit-learn,Jupyter">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Music-Recommendation-System" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -242,7 +271,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Movie-Recommendation-System">
+    <article class="project-card" data-repo="Movie-Recommendation-System" data-tags="Python,Scikit-learn,Jupyter">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Movie-Recommendation-System" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -255,7 +284,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Globe-Travel-Assistant-AI-Agent">
+    <article class="project-card" data-repo="Globe-Travel-Assistant-AI-Agent" data-tags="Python,LLM,LangChain">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Globe-Travel-Assistant-AI-Agent" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -268,7 +297,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Forecasting-Rental-Bike-Count-Kedro-Dash-Docker-Railway">
+    <article class="project-card" data-repo="Forecasting-Rental-Bike-Count-Kedro-Dash-Docker-Railway" data-tags="Python,MLOps,Docker,Railway">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Forecasting-Rental-Bike-Count-Kedro-Dash-Docker-Railway" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -281,7 +310,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Predicting-Maternal-Health-Risk-Kedro-Flask-Docker-Railway">
+    <article class="project-card" data-repo="Predicting-Maternal-Health-Risk-Kedro-Flask-Docker-Railway" data-tags="Python,MLOps,Flask,Docker,Railway">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Predicting-Maternal-Health-Risk-Kedro-Flask-Docker-Railway" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -294,7 +323,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Atlas-Travel-Assistant-Chatbot">
+    <article class="project-card" data-repo="Atlas-Travel-Assistant-Chatbot" data-tags="Python,FastAPI,LLM,Railway">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Atlas-Travel-Assistant-Chatbot" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -307,7 +336,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="Nairobi-House-Price-Prediction-Streamlit">
+    <article class="project-card" data-repo="Nairobi-House-Price-Prediction-Streamlit" data-tags="Python,Streamlit">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/Nairobi-House-Price-Prediction-Streamlit" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -320,7 +349,7 @@ a:hover { color: #fff; }
       </div>
     </article>
 
-    <article class="project-card" data-repo="VitrAI-Glass-Type-Classification-System-Flask">
+    <article class="project-card" data-repo="VitrAI-Glass-Type-Classification-System-Flask" data-tags="Python,Flask,Deep Learning">
       <div class="project-top">
         <span class="project-status status-shipped">SHIPPED ✓</span>
         <a href="https://github.com/MosesItapara/VitrAI-Glass-Type-Classification-System-Flask" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -370,6 +399,30 @@ const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
+</script>
+
+<script>
+(function () {
+  const bar = document.getElementById('filterBar');
+  if (!bar) return;
+  const grid = document.getElementById('projectsGrid');
+
+  bar.addEventListener('click', function (e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    grid.querySelectorAll('.project-card').forEach(card => {
+      if (filter === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const tags = (card.dataset.tags || '').split(',');
+        card.classList.toggle('hidden', !tags.includes(filter));
+      }
+    });
+  });
+})();
 </script>
 <script src="app.js"></script>
 </body>
