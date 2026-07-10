@@ -609,8 +609,9 @@ a:hover { color: #fff; }
   ],
   <span class="jkey">"ml_ai"</span>: [
     <span class="jstr">"CatBoost"</span>, <span class="jstr">"XGBoost"</span>,
-    <span class="jstr">"TensorFlow"</span>, <span class="jstr">"scikit-learn"</span>,
-    <span class="jstr">"LangChain"</span>, <span class="jstr">"MLflow"</span>, <span class="jstr">"DVC"</span>
+    <span class="jstr">"TensorFlow"</span>, <span class="jstr">"PyTorch"</span>,
+    <span class="jstr">"scikit-learn"</span>, <span class="jstr">"LangChain"</span>,
+    <span class="jstr">"MLflow"</span>, <span class="jstr">"DVC"</span>
   ],
   <span class="jkey">"mlops"</span>: [
     <span class="jstr">"Kedro"</span>, <span class="jstr">"Docker"</span>,
@@ -654,9 +655,9 @@ a:hover { color: #fff; }
         <span class="skill-pct">80%</span>
       </div>
       <div class="skill-bar-row">
-        <span class="skill-name">TensorFlow</span>
-        <div class="skill-track"><div class="skill-fill" data-pct="74"></div></div>
-        <span class="skill-pct">74%</span>
+        <span class="skill-name">Deep Learning (TensorFlow / PyTorch)</span>
+        <div class="skill-track"><div class="skill-fill" data-pct="78"></div></div>
+        <span class="skill-pct">78%</span>
       </div>
       <div class="skill-bar-row">
         <span class="skill-name">LangChain / LLMs</span>
@@ -727,7 +728,7 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-const roles = ['Machine Learning Engineer', 'MLOps Engineer', 'Data Engineer', 'AI Systems Builder'];
+const roles = ['Machine Learning Engineer', 'Deep Learning Engineer', 'MLOps Engineer', 'Data Engineer', 'AI Systems Builder'];
 let ri = 0, ci = 0, deleting = false;
 const rotEl = document.getElementById('rotatingText');
 function typeRole() {
