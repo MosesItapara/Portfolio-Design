@@ -325,6 +325,26 @@ a:hover { color: #fff; }
 .footer-socials a:hover { color: var(--lime); }
 .footer-socials svg { width: 18px; height: 18px; fill: currentColor; }
 .footer-sep { color: var(--text-dimmer); }
+
+/* ── Certifications ── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.cert-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
+  transition: border-color 0.25s, transform 0.25s;
+  text-decoration: none;
+}
+.cert-card:hover { border-color: var(--lime-mid); transform: translateY(-3px); color: var(--text); }
+.cert-issuer { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--lime); text-transform: uppercase; }
+.cert-name { font-size: 0.82rem; font-weight: 700; line-height: 1.35; color: var(--text); }
+.cert-link-label { font-size: 0.65rem; color: var(--text-dimmer); margin-top: auto; padding-top: 0.5rem; }
 .status-dot {
   display: inline-block; width: 7px; height: 7px; background: var(--lime);
   border-radius: 50%; box-shadow: 0 0 6px var(--lime-glow);
@@ -374,8 +394,9 @@ a:hover { color: #fff; }
     <a href="#experience" class="nav-link">Experience</a>
     <a href="#projects"   class="nav-link">Projects</a>
     <a href="#ongoing"    class="nav-link">Ongoing</a>
-    <a href="#skills"     class="nav-link">Skills</a>
-    <a href="#contact"    class="nav-link">Contact</a>
+    <a href="#skills"          class="nav-link">Skills</a>
+    <a href="#certifications"  class="nav-link">Certs</a>
+    <a href="#contact"         class="nav-link">Contact</a>
   </div>
   <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu">☰</button>
 </nav>
@@ -670,6 +691,56 @@ a:hover { color: #fff; }
         <span class="skill-pct">83%</span>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="certifications" class="section" style="padding-top: 0;">
+  <p class="section-label">VERIFIED.LEARNING</p>
+  <h2 class="section-title">Certifications<span class="dot">.</span></h2>
+  <div class="cert-grid">
+
+    <a href="https://www.credly.com/badges/2eba064f-90b8-4391-8c4a-6dcbb61d1b54/public_url" target="_blank" class="cert-card">
+      <span class="cert-issuer">Credly / Linux Foundation</span>
+      <span class="cert-name">Introduction to Kubernetes</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://www.udemy.com/certificate/UC-e437b924-622c-44e6-a2fd-869b8c5c9ad9/" target="_blank" class="cert-card">
+      <span class="cert-issuer">Udemy</span>
+      <span class="cert-name">Complete MLOps Bootcamp with 10+ End-to-End ML Projects</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://coursera.org/share/48842e58cddf5f9dce7b412e27aa176e" target="_blank" class="cert-card">
+      <span class="cert-issuer">Google / Coursera</span>
+      <span class="cert-name">Google Data Analytics</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://olympus.mygreatlearning.com/courses/49363/certificate" target="_blank" class="cert-card">
+      <span class="cert-issuer">Great Learning</span>
+      <span class="cert-name">Data Analysis Projects</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://alison.com/certification/check/$2y$10$SMjhsawYCDhCuSCKdz5JF.F.KB3jnyCKlIv3nPQYCG3W3nMoLMWai" target="_blank" class="cert-card">
+      <span class="cert-issuer">Alison</span>
+      <span class="cert-name">Cyber Security: Understand Threats and Prevent Attacks</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://dtmvamahs40ux.cloudfront.net/ComplementaryCourseCertificate/2921098/original/Moses_Haggai_Itapara20230714-67-1lsfmdt.jpg" target="_blank" class="cert-card">
+      <span class="cert-issuer">MathWorks</span>
+      <span class="cert-name">Introduction to MATLAB</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
+    <a href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=033cfa8f-0ade-4432-b5f1-d8fc05db576a" target="_blank" class="cert-card">
+      <span class="cert-issuer">MathWorks</span>
+      <span class="cert-name">Machine Learning with MATLAB</span>
+      <span class="cert-link-label">View credential ↗</span>
+    </a>
+
   </div>
 </section>
 
