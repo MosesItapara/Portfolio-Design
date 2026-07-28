@@ -249,6 +249,7 @@ const ALL_FEATURED_REPOS = new Set([
   'Atlas-Travel-Assistant-Chatbot',
   'Nairobi-House-Price-Prediction-Streamlit',
   'VitrAI-Glass-Type-Classification-System-Flask',
+  'POTATO-DESEASE-CLASSIFICATION-DEEP-LEARNING',
 ]);
 
 function renderOngoingProjects(repos) {
